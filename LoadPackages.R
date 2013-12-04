@@ -2,7 +2,7 @@
 update.packages(ask=F)
 pkgTest <- function(x)
 {
-  if (!require(x,character.only = TRUE))
+  if (x %in% rownames(installed.packages())==F)
   {
     install.packages(x,dep=TRUE)
     
@@ -11,4 +11,3 @@ pkgTest <- function(x)
 }
 neededPackages<-c("rgdal","ggplot2","png","plyr","raster","reshape","scales")
 for (package in neededPackages){pkgTest(package)}
-
